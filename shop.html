@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Shop All — Faisalabad Textile Mills</title>
+  <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <div id="site-header"></div>
+
+  <section class="page-hero">
+    <span class="eyebrow">Full Collection</span>
+    <h1>Shop All</h1>
+    <p>Browse our complete range — filter by category to find exactly what you're looking for.</p>
+  </section>
+
+  <section class="shop-section" id="shop" style="padding-top:0;">
+    <div class="container">
+      <div class="cat-pills" id="shopFilterPills" style="margin-bottom:14px;"></div>
+      <div class="cat-pills" id="shopSubFilterPills" style="margin-bottom:30px;display:none;"></div>
+
+      <div class="grid-view-toolbar" data-target="allProductsGrid">
+        <div class="view-toggle-group" role="group" aria-label="Product grid view">
+          <button type="button" class="view-btn" data-view="1" aria-label="1 column view" title="1 column">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="16" height="14" rx="2"></rect></svg>
+          </button>
+          <button type="button" class="view-btn active" data-view="2" aria-label="2 column view" title="2 columns">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="7" height="14" rx="1.5"></rect><rect x="14" y="5" width="7" height="14" rx="1.5"></rect></svg>
+          </button>
+          <button type="button" class="view-btn" data-view="3" aria-label="3 column view" title="3 columns">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="5" width="5.3" height="14" rx="1.2"></rect><rect x="9.3" y="5" width="5.3" height="14" rx="1.2"></rect><rect x="16.1" y="5" width="5.3" height="14" rx="1.2"></rect></svg>
+          </button>
+        </div>
+        <select class="sort-select" data-target="allProductsGrid" aria-label="Sort products">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="newest">Newest First</option>
+          <option value="name-asc">Name: A–Z</option>
+        </select>
+      </div>
+
+      <div class="product-grid" id="allProductsGrid"></div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <div id="ai-chat-root"></div>
+
+  <!-- ============ QUICK VIEW MODAL ============ -->
+  <div class="modal-overlay" id="productModal">
+    <div class="product-modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div>
+        <div class="modal-gallery-main">
+          <button type="button" class="gallery-arrow gallery-prev" id="galleryPrev" aria-label="Previous image">&#10094;</button>
+          <div class="gallery-track" id="galleryTrack"></div>
+          <button type="button" class="gallery-arrow gallery-next" id="galleryNext" aria-label="Next image">&#10095;</button>
+          <div class="gallery-dots" id="galleryDots"></div>
+        </div>
+        <div class="modal-thumbs" id="modalThumbs"></div>
+      </div>
+      <div class="modal-details">
+        <span class="cat-tag" id="modalCat"></span>
+        <h2 id="modalTitle"></h2>
+        <div class="modal-price">
+          <span class="price" id="modalPrice"></span>
+          <span class="old-price" id="modalOldPrice"></span>
+        </div>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="option-group" id="modalColorGroup">
+          <label>Choose Color</label>
+          <div class="color-options" id="modalColors"></div>
+        </div>
+        <div class="qty-row">
+          <label style="font-size:13px;font-weight:600;">Quantity</label>
+          <div class="qty-control">
+            <button id="qtyMinus" type="button">−</button>
+            <span id="qtyVal">1</span>
+            <button id="qtyPlus" type="button">+</button>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-outline btn-block" id="addToCartBtn">Add to Cart</button>
+          <button class="btn btn-primary btn-block" id="buyNowBtn">Buy Now</button>
+        </div>
+        <p class="stock-note" id="modalStock"></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="cart-drawer-root"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+<script src="js/responsive.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Admin Panel — Faisalabad Textile Mills</title>
+  <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body class="admin-body">
+
+  <!-- ============ LOGIN GATE ============ -->
+  <div class="admin-login-wrap" id="loginWrap">
+    <div class="admin-login-box">
+      <img src="images/logo.png" alt="Faisalabad Textile Mills" class="admin-login-logo">
+      <div class="logo-mark">Faisalabad Textile Mills</div>
+      <p class="hint">Admin Panel · Authorized access only<br>
+      </p>
+      <form id="loginForm">
+        <div class="form-row" style="text-align:left;"><label>Username</label><input type="text" id="loginUser"
+            required></div>
+        <div class="form-row" style="text-align:left;"><label>Password</label><input type="password" id="loginPass"
+            required></div>
+        <button class="btn btn-primary btn-block" type="submit">Login</button>
+        <p class="admin-error" id="loginError">Wrong! username or password</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ ADMIN DASHBOARD ============ -->
+  <div class="admin-layout" id="adminLayout" style="display:none;">
+    <aside class="admin-sidebar">
+      <div class="logo-mark sidebar-logo-mark"><img src="images/logo.png" alt="Faisalabad Textile Mills">Faisalabad
+        Textile Mills</div>
+      <nav class="admin-nav">
+        <button data-panel="dashboard" class="active">📊 Dashboard</button>
+        <button data-panel="listings">🧵 Listings</button>
+        <button data-panel="categories">🏷️ Categories</button>
+        <button data-panel="orders">📦 Orders <span class="nav-badge" id="ordersBadge" style="display:none;"></span></button>
+        <button data-panel="reviews">⭐ Reviews</button>
+        <button data-panel="sales">💰 Sales Report</button>
+        <button data-panel="flashsale">🔥 Flash Sale</button>
+      </nav>
+      <div class="admin-logout">
+        <button class="btn btn-ghost btn-sm" id="logoutBtn">Logout</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+
+      <!-- DASHBOARD -->
+      <section class="admin-panel active" id="panel-dashboard">
+        <div class="admin-header-row">
+          <h1>Dashboard</h1>
+        </div>
+        <div class="stat-grid" id="dashStats"></div>
+        <div class="admin-card">
+          <h3>Recent Orders</h3>
+          <div class="table-wrap">
+            <table class="data-table" id="dashRecentOrders"></table>
+          </div>
+        </div>
+      </section>
+
+      <!-- LISTINGS -->
+      <section class="admin-panel" id="panel-listings">
+        <div class="admin-header-row">
+          <h1>Manage Listings</h1>
+          <button class="btn btn-primary btn-sm" id="addListingBtn">+ Add New Listing</button>
+        </div>
+        <div class="admin-card">
+          <div class="table-wrap">
+            <table class="data-table" id="listingsTable"></table>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORIES -->
+      <!-- CATEGORIES -->
+      <section class="admin-panel" id="panel-categories">
+        <div class="admin-header-row">
+          <h1>Manage Categories</h1>
+        </div>
+        <div class="admin-card">
+          <h3>Add New Category</h3>
+          <form id="categoryForm" style="display:flex;gap:10px;">
+            <input type="text" id="newCategoryName" placeholder="e.g. Bridal Collection" required
+              style="flex:1;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+            <button class="btn btn-primary btn-sm" type="submit">Add Category</button>
+          </form>
+        </div>
+        <div class="admin-card">
+          <h3>Add New Subcategory</h3>
+          <form id="subcategoryForm" style="display:flex;gap:10px;flex-wrap:wrap;">
+            <select id="subcatParentSelect" required
+              style="flex:1;min-width:180px;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);"></select>
+            <input type="text" id="newSubcategoryName" placeholder="e.g. Stitched" required
+              style="flex:1;min-width:180px;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+            <button class="btn btn-primary btn-sm" type="submit">Add Subcategory</button>
+          </form>
+        </div>
+        <div class="admin-card">
+          <h3>All Categories</h3>
+          <div class="table-wrap">
+            <table class="data-table" id="categoriesTable"></table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORDERS -->
+      <section class="admin-panel" id="panel-orders">
+        <div class="admin-header-row">
+          <h1>Manage Orders</h1>
+        </div>
+        <div class="admin-card">
+          <div class="table-wrap">
+            <table class="data-table" id="ordersTable"></table>
+          </div>
+        </div>
+      </section>
+
+      <!-- REVIEWS -->
+      <section class="admin-panel" id="panel-reviews">
+        <div class="admin-header-row">
+          <h1>Customer Reviews</h1>
+        </div>
+        <div class="stat-grid" id="reviewStats"></div>
+        <div class="admin-card">
+          <h3>All Reviews</h3>
+          <div class="table-wrap">
+            <table class="data-table" id="reviewsTable"></table>
+          </div>
+        </div>
+      </section>
+
+      <!-- FLASH SALE -->
+      <section class="admin-panel" id="panel-flashsale">
+        <div class="admin-header-row">
+          <h1>Flash Sale Banner</h1>
+        </div>
+        <div class="admin-card">
+          <h3>Homepage Banner Settings</h3>
+          <form id="flashSaleForm">
+            <div class="form-grid">
+              <div class="full">
+                <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Sale Name</label>
+                <input type="text" id="saleName" placeholder="e.g. Winter Mega Sale" required
+                  style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+              </div>
+              <div class="full">
+                <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Subtitle / Note (optional)</label>
+                <input type="text" id="saleSubtitle" placeholder="e.g. Flat 30% off on winter collection"
+                  style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+              </div>
+              <div>
+                <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Sale End Date &amp; Time</label>
+                <input type="datetime-local" id="saleEndDate" required
+                  style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:26px;">
+                <input type="checkbox" id="saleActive" style="width:18px;height:18px;">
+                <label for="saleActive" style="font-size:13px;font-weight:600;">Banner Active (homepage par dikhana hai)</label>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn btn-ghost" id="endSaleNowBtn">End Sale Now</button>
+              <button type="submit" class="btn btn-primary">Save Banner</button>
+            </div>
+          </form>
+          <p id="flashSaleStatus" style="margin-top:14px;font-size:13.5px;color:var(--ink-soft);"></p>
+        </div>
+      </section>
+
+      <!-- SALES REPORT -->
+      <section class="admin-panel" id="panel-sales">
+        <div class="admin-header-row">
+          <h1>Sales Report</h1>
+        </div>
+        <div class="stat-grid" id="salesStats"></div>
+        <div class="admin-card">
+          <h3>Top Selling Products</h3>
+          <div id="topProductsBars"></div>
+        </div>
+        <div class="admin-card">
+          <h3>Sales by Category</h3>
+          <div id="categoryBars"></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============ ADD/EDIT LISTING MODAL ============ -->
+  <div class="modal-form-overlay" id="listingModal">
+    <div class="modal-form-box">
+      <h3 id="listingModalTitle">Add New Listing</h3>
+      <form id="listingForm">
+        <input type="hidden" id="listingId">
+        <div class="form-grid">
+          <div class="full">
+            <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Product Title</label>
+            <input type="text" id="listingTitle" required
+              style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+          </div>
+          <div>
+            <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Category</label>
+            <select id="listingCategory" required
+              style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);"></select>
+          </div>
+          <div>
+          <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Subcategory</label>
+          <select id="listingSubcategory" style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);"></select>
+        </div>
+        <div class="full">
+          <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Also Show In (optional — extra categories, jaise "New Arrival")</label>
+          <div class="checkbox-row" id="listingExtraCategories"></div>
+        </div>
+        <div>
+          <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Badge</label>
+            <select id="listingBadge"
+              style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+              <option value="none">None</option>
+              <option value="new">New Arrival</option>
+              <option value="top">Top Sale</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Price (Rs)</label>
+            <input type="number" id="listingPrice" required min="0"
+              style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+          </div>
+          <div>
+            <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Old Price (optional, sale ke
+              liye)</label>
+            <input type="number" id="listingOldPrice" min="0"
+              style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+          </div>
+          <div>
+            <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Stock Quantity</label>
+            <input type="number" id="listingStock" required min="0"
+              style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+          </div>
+          <div>
+            <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Add Color</label>
+            <div style="display:flex;gap:8px;">
+              <input type="text" id="listingColorInput" placeholder="e.g. Maroon"
+                style="flex:1;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+              <button type="button" class="btn btn-ghost btn-sm" id="addColorBtn">Add</button>
+            </div>
+          </div>
+          <div class="full">
+            <div class="color-tag-row" id="colorTagRow"></div>
+          </div>
+          <div class="full">
+            <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Available Sizes (optional)</label>
+            <div class="checkbox-row" id="listingSizes">
+              <label class="checkbox-chip"><input type="checkbox" value="Free Size"><span>Free Size</span></label>
+              <label class="checkbox-chip"><input type="checkbox" value="XS"><span>XS</span></label>
+              <label class="checkbox-chip"><input type="checkbox" value="S"><span>S</span></label>
+              <label class="checkbox-chip"><input type="checkbox" value="M"><span>M</span></label>
+              <label class="checkbox-chip"><input type="checkbox" value="L"><span>L</span></label>
+              <label class="checkbox-chip"><input type="checkbox" value="XL"><span>XL</span></label>
+              <label class="checkbox-chip"><input type="checkbox" value="XXL"><span>XXL</span></label>
+            </div>
+          </div>
+          <div class="full">
+            <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Description</label>
+            <textarea id="listingDesc" rows="3" required
+              style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);font-family:inherit;"></textarea>
+          </div>
+          <div class="full">
+            <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Product Images (multiple
+              allowed)</label>
+            <input type="file" id="listingImages" accept="image/*" multiple>
+            <div class="image-preview-row" id="imagePreviewRow"></div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-ghost" id="cancelListingBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Listing</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ LISTING QUICK VIEW MODAL ============ -->
+  <div class="modal-form-overlay" id="viewListingModal">
+    <div class="modal-form-box" style="max-width:640px;">
+      <h3>Listing Preview</h3>
+      <div id="viewListingArea" style="margin:16px 0;"></div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-ghost" id="closeViewListingBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============ ORDER DETAIL MODAL ============ -->
+  <div class="modal-form-overlay" id="orderDetailModal">
+    <div class="modal-form-box" style="max-width:640px;">
+      <h3>Order Detail</h3>
+      <div id="orderPrintArea" style="margin:16px 0;font-size:14px;line-height:1.7;"></div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-ghost" id="closeOrderDetailBtn">Close</button>
+        <button type="button" class="btn btn-outline" id="printOrderBtn">🖨️ Print</button>
+        <button type="button" class="btn btn-primary" id="downloadOrderPdfBtn">⬇️ Download PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/responsive.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+
+</html>

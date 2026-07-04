@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Checkout — Faisalabad Textile Mills</title>
+  <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <div id="site-header"></div>
+
+  <section class="pdp-section">
+    <div class="container checkout-page-grid" id="checkoutFormWrap">
+      <div>
+        <h1 style="font-size:28px;margin-bottom:6px;">Checkout</h1>
+        <p style="color:var(--ink-soft);font-size:13.5px;margin-bottom:26px;">Enter your shipping details to complete your order.</p>
+        <form id="checkoutForm">
+          <div class="form-grid">
+            <div>
+              <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">First Name</label>
+              <input type="text" required id="custFirstName" style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+            </div>
+            <div>
+              <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Last Name</label>
+              <input type="text" required id="custLastName" style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+            </div>
+            <div>
+              <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Phone Number</label>
+              <input type="tel" required id="custPhone" placeholder="03xx-xxxxxxx" style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+            </div>
+            <div>
+              <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Country</label>
+              <input type="text" required id="custCountry" value="Pakistan" style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+            </div>
+            <div class="full">
+              <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Complete Address</label>
+              <textarea required id="custAddress" rows="3" style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);font-family:inherit;"></textarea>
+            </div>
+            <div class="full">
+              <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Nearby Landmark (optional)</label>
+              <input type="text" id="custNearby" placeholder="e.g. Near Al-Falah Masjid" style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+            </div>
+            <div>
+              <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">City</label>
+              <input type="text" required id="custCity" style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+            </div>
+            <div>
+              <label style="font-size:13px;font-weight:600;display:block;margin-bottom:7px;">Postal Code</label>
+              <input type="text" id="custPostalCode" style="width:100%;padding:11px 14px;border-radius:8px;border:1.5px solid var(--line);">
+            </div>
+          </div>
+
+          <div class="cod-note">💵 <strong>Payment Method:</strong> Cash on Delivery — order deliver hone par payment karein.</div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="placeOrderBtn" style="margin-top:18px;">Place Order</button>
+        </form>
+      </div>
+
+      <aside class="order-summary-card" id="orderSummaryWrap">
+        <h3>Your Order</h3>
+        <div id="orderSummaryItems"></div>
+        <div id="orderSummaryFoot" class="order-summary-foot">
+          <div class="row"><span>Subtotal</span><span id="summarySubtotal">Rs 0</span></div>
+          <div class="row"><span>Shipping</span><span id="summaryShipping">Rs 0</span></div>
+          <div class="row total"><span>Total</span><span id="summaryTotal">Rs 0</span></div>
+          <p class="ship-note">🚚 Free delivery on all orders across Pakistan.</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="container" id="checkoutSuccessWrap" style="display:none;max-width:480px;">
+      <div class="order-success">
+        <div class="check">✓</div>
+        <h3>Order Confirmed!</h3>
+        <p class="sub" id="successOrderId"></p>
+        <p style="color:var(--ink-soft);font-size:13.5px;">Thank you! Our team will contact you shortly to confirm your delivery.</p>
+        <a href="index.html" class="btn btn-outline btn-block" style="margin-top:18px;">Continue Shopping</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <div id="ai-chat-root"></div>
+  <div id="cart-drawer-root"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+<script src="js/responsive.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+
+</html>

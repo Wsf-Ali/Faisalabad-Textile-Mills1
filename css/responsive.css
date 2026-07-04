@@ -1,0 +1,1047 @@
+/* ============================================================
+   Faisalabad Textile Mills — Responsive Stylesheet
+   Load this AFTER style.css on every page.
+   All @media rules for the whole site live here so style.css
+   stays desktop/base-only.
+
+   Breakpoints used:
+   - Small Laptop / Small Desktop : max-width 1200px  (1025–1200)
+   - Tablet                       : max-width 1024px  (769–1024)
+   - Large Mobile / Small Tablet  : max-width 768px   (481–768)
+   - Mobile                       : max-width 480px   (320–480)
+
+   Notes:
+   - Every page already has <meta name="viewport" content="width=
+     device-width, initial-scale=1.0">, so there is no manual
+     pinch-zoom — layout is what has to adapt.
+   - Classes ending in .view-1 / .view-2 / .view-3 and the
+     .grid-view-toolbar block are the mobile/tablet grid-switcher
+     UI (1/2/3 columns). Their HTML + JS wiring comes in a later
+     step — this CSS is ready and waiting for it.
+   - .nav-scrim is a backdrop element that responsive.js will
+     create/toggle for the mobile nav drawer.
+   ============================================================ */
+
+html, body {
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img, video {
+  max-width: 100%;
+}
+
+
+/* ============================================================
+   1025px – 1200px  (Small Laptop)
+   ============================================================ */
+@media (max-width: 1200px) {
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .hero-copy {
+    padding: 50px 20px 50px 4vw;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 4.6vw, 58px);
+  }
+
+  .product-grid,
+  .review-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-main {
+    max-width: 100%;
+  }
+
+  .pdp-grid {
+    gap: 34px;
+  }
+
+  .checkout-page-grid {
+    gap: 30px;
+  }
+}
+
+
+/* ============================================================
+   769px – 1024px  (Tablet)
+   ============================================================ */
+@media (max-width: 1024px) {
+
+  /* ---------- Header / Mobile Nav ---------- */
+  .menu-toggle {
+    display: flex;
+    order: -1;
+  }
+
+  .header-main {
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 300px;
+    max-width: 85vw;
+    height: 100vh;
+    height: 100dvh;
+    background: #fff;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 90px 22px 30px;
+    box-shadow: var(--shadow-lift);
+    z-index: 220;
+    overflow-y: auto;
+    transition: left .35s var(--ease);
+  }
+
+  .main-nav.open {
+    left: 0;
+  }
+
+  .main-nav a {
+    width: 100%;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+  }
+
+  .main-nav a::after {
+    display: none;
+  }
+
+  .nav-item {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav-item > a {
+    flex: 1;
+  }
+
+  .nav-item.has-dropdown {
+    display: block;
+    position: relative;
+  }
+
+  .nav-item.has-dropdown > a {
+    display: inline-block;
+    width: auto;
+    border-bottom: none;
+  }
+
+  .nav-caret {
+    position: absolute;
+    right: 0;
+    top: 8px;
+    font-size: 13px;
+    padding: 8px;
+    transition: transform .25s;
+  }
+
+  .nav-item.open .nav-caret {
+    transform: rotate(180deg);
+  }
+
+  .nav-item {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-dropdown,
+  .categories-dropdown {
+    position: static;
+    min-width: 0;
+    width: 100%;
+    background: var(--bg);
+    border-radius: 10px;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    margin: 0 0 10px;
+    padding: 6px 0 6px 14px;
+    display: none;
+  }
+
+  .nav-item.open .nav-dropdown {
+    display: flex;
+  }
+
+  .nav-dropdown a {
+    padding: 10px 0;
+    border-bottom: none;
+    font-size: 14px;
+  }
+
+  .nav-scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 20, 18, .5);
+    z-index: 210;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s;
+  }
+
+  .nav-scrim.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .hero-copy {
+    padding: 44px 20px 30px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    justify-content: center;
+  }
+
+  .hero p.lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    min-height: 340px;
+    order: -1;
+  }
+
+  /* ---------- Grid view toolbar (1/2/3 column switch) ---------- */
+  .grid-view-toolbar {
+    display: flex;
+  }
+
+  /* ---------- Product / Review grids ---------- */
+  .product-grid,
+  .review-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  /* touch devices can't hover — keep quick-add visible */
+  .quick-add {
+    opacity: 1;
+    transform: none;
+    position: static;
+    margin-top: 10px;
+    padding: 0 12px 12px;
+  }
+
+  .quick-add button {
+    background: var(--bg);
+  }
+
+  .product-card:hover .product-media img {
+    transform: none;
+  }
+
+  /* ---------- Product modal / PDP ---------- */
+  .product-modal {
+    grid-template-columns: 1fr;
+    max-height: 92vh;
+  }
+
+  .pdp-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .pdp-gallery {
+    position: static;
+  }
+
+  /* ---------- Checkout ---------- */
+  .checkout-page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary-card {
+    position: static;
+  }
+
+  /* ---------- About / Contact / static content ---------- */
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .value-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+  }
+
+  /* ---------- Admin panel ---------- */
+  .admin-layout {
+    grid-template-columns: 210px 1fr;
+  }
+
+  .admin-main {
+    padding: 24px 20px 50px;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* ---------- Forms ---------- */
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ============================================================
+   481px – 768px  (Large Mobile / Small Tablet)
+   ============================================================ */
+@media (max-width: 768px) {
+
+  .container {
+    padding: 0 16px;
+  }
+
+  /* ---------- Header ---------- */
+  .header-top {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  .logo-text small {
+    display: block;
+    font-size: 10px;
+  }
+
+  .main-nav {
+    width: 280px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero h1 {
+    font-size: clamp(28px, 7vw, 40px);
+  }
+
+  .hero p.lead {
+    font-size: 15px;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-stats {
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .hero-visual {
+    min-height: 280px;
+  }
+
+  .hero-badge-float {
+    width: 74px;
+    height: 74px;
+  }
+
+  .hero-badge-float strong {
+    font-size: 14px;
+  }
+
+  /* ---------- Category pills ---------- */
+  .cat-pills {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 0 16px 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cat-pill {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 9px 16px;
+    font-size: 12.5px;
+  }
+
+  /* ---------- Section spacing ---------- */
+  .shop-section {
+    padding: 34px 0 50px;
+  }
+
+  .section-head h2 {
+    font-size: 24px;
+  }
+
+  /* ---------- Reviews ---------- */
+  .review-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* ---------- Promo strip / flash sale ---------- */
+  .promo-strip {
+    margin: 40px 16px;
+    padding: 30px 22px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .flash-sale-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .flash-sale-timer {
+    align-self: stretch;
+    justify-content: space-between;
+  }
+
+  /* ---------- Product modal ---------- */
+  .modal-details {
+    padding: 22px 20px 26px;
+  }
+
+  .modal-details h2 {
+    font-size: 21px;
+  }
+
+  .modal-thumbs {
+    flex-wrap: wrap;
+  }
+
+  /* ---------- PDP ---------- */
+  .pdp-section {
+    padding: 20px 0 10px;
+  }
+
+  .pdp-details h1 {
+    font-size: 22px;
+  }
+
+  /* ---------- Checkout ---------- */
+  .form-grid .full,
+  .checkout-page-grid .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ---------- About / Contact ---------- */
+  .content-block {
+    padding: 44px 16px;
+  }
+
+  .page-hero {
+    padding: 50px 16px 34px;
+  }
+
+  .value-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-box {
+    padding: 22px;
+  }
+
+  .map-frame iframe {
+    height: 220px;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: left;
+  }
+
+  .site-footer {
+    padding: 40px 16px 0;
+  }
+
+  /* ---------- Admin panel ---------- */
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-sidebar {
+    position: relative;
+    padding: 14px 16px;
+  }
+
+  .admin-sidebar .sidebar-logo-mark {
+    margin-bottom: 14px;
+  }
+
+  .admin-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .admin-nav button {
+    width: auto;
+    flex: 1 1 auto;
+    justify-content: center;
+    font-size: 12.5px;
+    padding: 10px;
+  }
+
+  .admin-logout {
+    margin-top: 14px;
+  }
+
+  .admin-main {
+    padding: 20px 14px 40px;
+  }
+
+  .admin-header-row h1 {
+    font-size: 21px;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .stat-card .value {
+    font-size: 21px;
+  }
+
+  table.data-table {
+    font-size: 12.5px;
+  }
+
+  table.data-table th,
+  table.data-table td {
+    padding: 9px 8px;
+  }
+
+  .modal-form-box {
+    padding: 20px;
+  }
+
+  /* ---------- Cart drawer ---------- */
+  .cart-drawer {
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  /* ---------- Chat widget ---------- */
+  .chat-panel {
+    width: 92vw;
+    right: 4vw;
+  }
+}
+
+
+/* ============================================================
+   320px – 480px  (Mobile)
+   ============================================================ */
+@media (max-width: 480px) {
+
+  .container {
+    padding: 0 14px;
+  }
+
+  /* ---------- Header ---------- */
+  .header-top p {
+    font-size: 10.5px;
+  }
+
+  .logo-img {
+    height: 32px;
+  }
+
+  .logo-text {
+    font-size: 13px;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .main-nav {
+    width: 100%;
+    max-width: 100vw;
+    padding: 80px 18px 24px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero-copy {
+    padding: 34px 14px 24px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+    line-height: 1.15;
+  }
+
+  .hero p.lead {
+    font-size: 13.5px;
+  }
+
+  .hero-stats {
+    gap: 16px;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .hero-stats div strong {
+    font-size: 20px;
+  }
+
+  .hero-visual {
+    min-height: 220px;
+  }
+
+  .hero-badge-float {
+    width: 62px;
+    height: 62px;
+    top: 10%;
+    right: 6%;
+  }
+
+  .hero-badge-float strong {
+    font-size: 12px;
+  }
+
+  .hero-badge-float span {
+    font-size: 7.5px;
+  }
+
+  /* ---------- Grid view toolbar ---------- */
+  .grid-view-toolbar {
+    margin-bottom: 14px;
+  }
+
+  .grid-view-toolbar .view-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .grid-view-toolbar .sort-select {
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+
+  /* ---------- Product grid (default, before JS view class applies) ---------- */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .product-info {
+    padding: 10px 10px 12px;
+  }
+
+  .product-info h3 {
+    font-size: 13px;
+    margin: 4px 0 6px;
+  }
+
+  .price-row .price {
+    font-size: 13.5px;
+  }
+
+  .price-row .old-price {
+    font-size: 11px;
+  }
+
+  .ribbon {
+    font-size: 9.5px;
+    padding: 4px 10px 4px 14px;
+  }
+
+  /* 3-column mobile view needs tighter card content */
+  .product-grid.view-3 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .product-grid.view-3 .product-info {
+    padding: 7px 7px 9px;
+  }
+
+  .product-grid.view-3 .product-info h3 {
+    font-size: 10.5px;
+    margin: 3px 0 4px;
+  }
+
+  .product-grid.view-3 .price-row .price {
+    font-size: 11px;
+  }
+
+  .product-grid.view-3 .cat-tag {
+    display: none;
+  }
+
+  .product-grid.view-1 {
+    grid-template-columns: 1fr;
+  }
+
+  /* ---------- Section spacing ---------- */
+  .shop-section {
+    padding: 26px 0 40px;
+  }
+
+  .section-head h2 {
+    font-size: 21px;
+  }
+
+  .section-head p {
+    font-size: 13px;
+  }
+
+  /* ---------- Product modal ---------- */
+  .product-modal {
+    max-height: 95vh;
+    border-radius: 14px;
+  }
+
+  .modal-details {
+    padding: 18px 16px 22px;
+  }
+
+  .modal-price .price {
+    font-size: 18px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-thumbs img {
+    width: 46px;
+    height: 46px;
+  }
+
+  /* ---------- PDP ---------- */
+  .pdp-details h1 {
+    font-size: 19px;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+
+  /* ---------- Checkout ---------- */
+  .order-summary-card {
+    padding: 18px;
+  }
+
+  .cod-note {
+    font-size: 12.5px;
+  }
+
+  /* ---------- About / Contact ---------- */
+  .page-hero h1 {
+    font-size: 26px;
+  }
+
+  .two-col h2 {
+    font-size: 22px;
+  }
+
+  .contact-info-card {
+    padding: 18px;
+  }
+
+  /* ---------- Admin panel ---------- */
+  .admin-header-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-header-row .btn {
+    width: 100%;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  table.data-table {
+    font-size: 11.5px;
+  }
+
+  .row-actions {
+    flex-wrap: wrap;
+  }
+
+  .modal-form-box {
+    padding: 16px;
+  }
+
+  .form-grid {
+    gap: 12px;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer-bottom p {
+    font-size: 11.5px;
+  }
+
+  .footer-logo {
+    font-size: 17px;
+  }
+
+  /* ---------- Chat widget ---------- */
+  .chat-fab {
+    width: 50px;
+    height: 50px;
+  }
+
+  .chat-panel {
+    width: 94vw;
+    right: 3vw;
+    height: 70vh;
+  }
+}
+
+/* ============================================================
+   NEW ADDITIONS — Step 1(b)
+   1. No-zoom safety net (works with the JS lock in responsive.js)
+   2. Grid View Toolbar (1 / 2 / 3 column switch + Sort) — works
+      on every screen size, not just mobile
+   3. Mobile bottom nav bar (Home / Shop / About / Contact)
+   4. Mobile header: hamburger drawer keeps only "Categories",
+      since Home/Shop/About/Contact now live in the bottom nav
+   ============================================================ */
+
+/* ---------- 1. No-zoom safety net ---------- */
+html {
+  touch-action: manipulation;   /* removes 300ms delay + kills double-tap zoom */
+  -ms-touch-action: manipulation;
+}
+
+input, select, textarea, button {
+  touch-action: manipulation;
+}
+
+@media (max-width: 768px) {
+  /* iOS Safari auto-zooms into any input with font-size below 16px
+     on focus. Forcing 16px here stops that "jump" on mobile only. */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+
+/* ---------- 2. Grid View Toolbar (all screen sizes) ---------- */
+.grid-view-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1024px) {
+  .grid-view-toolbar {
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1025px) {
+  /* The column toggle only matters on tablet/mobile; desktop
+     already shows a fixed multi-column grid via style.css */
+  .view-toggle-group {
+    display: none;
+  }
+}
+
+.view-toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg, #f6f1ee);
+  border: 1.5px solid var(--line, #e6dcd6);
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.view-toggle-group .view-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--ink-soft, #8a7d78);
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+
+.view-toggle-group .view-btn:hover {
+  color: var(--ink, #2e2422);
+}
+
+.view-toggle-group .view-btn.active {
+  background: #fff;
+  color: var(--ink, #2e2422);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .12);
+}
+
+.sort-select {
+  padding: 9px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line, #e6dcd6);
+  background: #fff;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: var(--ink, #2e2422);
+  cursor: pointer;
+}
+
+/* Column classes only take effect at tablet/mobile widths — on
+   desktop the grid already looks great via style.css / the
+   breakpoints above, so the toggle doesn't touch it there. */
+@media (max-width: 1024px) {
+  .product-grid.view-1 { grid-template-columns: 1fr !important; }
+  .product-grid.view-2 { grid-template-columns: repeat(2, 1fr) !important; }
+  .product-grid.view-3 { grid-template-columns: repeat(3, 1fr) !important; }
+}
+
+@media (max-width: 480px) {
+  .grid-view-toolbar {
+    gap: 8px;
+  }
+
+  .sort-select {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+
+/* ---------- 3. Mobile bottom nav bar ---------- */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 190;
+    background: #fff;
+    border-top: 1px solid var(--line, #e6dcd6);
+    box-shadow: 0 -2px 14px rgba(0, 0, 0, .08);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .mobile-bottom-nav .mbn-link {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 9px 4px 8px;
+    color: var(--ink-soft, #8a7d78);
+    text-decoration: none;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .2px;
+  }
+
+  .mobile-bottom-nav .mbn-icon {
+    display: flex;
+  }
+
+  .mobile-bottom-nav .mbn-link.active {
+    color: var(--rose, #1f4a3d);
+  }
+
+  /* Keep page content (and footer) clear of the fixed bar */
+  body.has-bottom-nav:not(.admin-body) {
+    padding-bottom: 62px;
+  }
+
+  body.has-bottom-nav .chat-fab {
+    bottom: 78px;
+  }
+
+  body.has-bottom-nav .cart-drawer,
+  body.has-bottom-nav .cart-overlay {
+    bottom: 0; /* drawer still covers full height, unaffected */
+  }
+}
+
+
+/* ---------- 4. Mobile header: hamburger keeps only Categories ---------- */
+@media (max-width: 768px) {
+  /* Home / Shop / About / Contact already live in the bottom nav,
+     so hide the plain links inside the slide-out drawer and leave
+     only the "Categories" dropdown item there. */
+  .main-nav > a {
+    display: none;
+  }
+
+  .nav-item.has-dropdown {
+    border-bottom: none;
+  }
+}

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Faisalabad Textile Mills — Pakistan's Online Fashion Store</title>
+  <meta name="description"
+    content="Winter collection, lawn, pret, formal wear aur accessories — sab ek hi jagah, Faisalabad Textile Mills par.">
+  <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <div id="site-header"></div>
+
+  <!-- ============ HERO ============ -->
+  <!-- ============ HERO SLIDER ============ -->
+<!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="hero-eyebrow">New Season Edit</span>
+      <h1>Style that feels <em>like you.</em></h1>
+      <p class="lead">From cozy winter shawls to elegant formal party wear, **Faisalabad Textile Mills** brings you
+        Pakistan's most beautiful fashion collection—all in one store.
+      </p>
+      <div class="hero-ctas">
+        <a href="#shop" class="btn btn-primary">Shop Collection</a>
+        <a href="#shop" class="btn btn-outline" data-cat="cat_winter" id="heroWinterBtn">Winter Collection</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>500+</strong><span>Happy Customers</span></div>
+        <div><strong>120+</strong><span>Unique Designs</span></div>
+        <div><strong>4.8★</strong><span>Average Rating</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img class="img-a" src="images/hero 1.jpg" alt="Model wearing Faisalabad Textile Mills winter collection">
+      <img class="img-b" src="images/hero2.jpg" alt="New arrival highlight">
+      <div class="hero-badge-float"><strong>30%</strong><span>Off Today</span></div>
+    </div>
+  </section>
+
+ 
+
+
+  <!-- ============ NEW ARRIVALS ============ -->
+  <section class="shop-section" id="newArrivals" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Just In</span>
+        <h2>New Arrivals</h2>
+        <p>Discover the latest pieces that have just been added to our collection.</p>
+      </div>
+      <div class="product-grid" id="newArrivalGrid"></div>
+    </div>
+  </section>
+
+
+  
+  <!-- ============ TOP SALE ============ -->
+  <section class="shop-section" id="topSale">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Trending</span>
+        <h2>Top Sale</h2>
+        <p>Our Most Loved Pieces.</p>
+      </div>
+      <div class="product-grid" id="topSaleGrid"></div>
+    </div>
+  </section>
+
+   <!-- ============ LIMITED-TIME OFFER COUNTDOWN ============ -->
+ 
+
+ <div id="flashSaleBanner" class="flash-sale-banner" style="display:none;">
+    <div class="container flash-sale-inner">
+      <div class="flash-sale-left">
+        <span class="flash-sale-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="13" r="8"></circle>
+            <path d="M12 9v4l2.5 2.5"></path>
+            <path d="M9 2h6"></path>
+            <path d="M19 5l-1.5 1.5"></path>
+          </svg>
+        </span>
+        <div>
+          <span class="flash-sale-tag">DON'T MISS OUT</span>
+          <h3 id="flashSaleName"></h3>
+          <p id="flashSaleSubtitle"></p>
+        </div>
+      </div>
+      <div class="flash-sale-timer" id="flashSaleTimer">
+        <div class="timer-box"><span id="fsDays">00</span><small>DAYS</small></div>
+        <span class="timer-colon">:</span>
+        <div class="timer-box"><span id="fsHours">00</span><small>HOURS</small></div>
+        <span class="timer-colon">:</span>
+        <div class="timer-box"><span id="fsMins">00</span><small>MINS</small></div>
+        <span class="timer-colon">:</span>
+        <div class="timer-box active"><span id="fsSecs">00</span><small>SECS</small></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============ PROMO STRIP ============ -->
+  <div class="promo-strip">
+    <div>
+      <h2>Discover the newest pieces that have just arrived in our collection.</h2>
+      <p>Enjoy free delivery on every order, with Cash on Delivery available nationwide across Pakistan.</p>
+    </div>
+    <a href="#shop" class="btn btn-rose">Explore Now</a>
+  </div>
+
+  <!-- ============ ALL PRODUCTS (single listing, filterable) ============ -->
+  <section class="shop-section" id="shop">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Full Collection</span>
+        <h2>All Listings</h2>
+        <!-- <p>Saari listing ek hi page par — category se filter karein ya search karein.</p> -->
+      </div>
+      <div class="cat-pills" id="shopFilterPills" style="margin-bottom:14px;"></div>
+      <div class="cat-pills" id="shopSubFilterPills" style="margin-bottom:30px;display:none;"></div>
+
+      <div class="grid-view-toolbar" data-target="allProductsGrid">
+        <div class="view-toggle-group" role="group" aria-label="Product grid view">
+          <button type="button" class="view-btn" data-view="1" aria-label="1 column view" title="1 column">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="16" height="14" rx="2"></rect></svg>
+          </button>
+          <button type="button" class="view-btn active" data-view="2" aria-label="2 column view" title="2 columns">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="7" height="14" rx="1.5"></rect><rect x="14" y="5" width="7" height="14" rx="1.5"></rect></svg>
+          </button>
+          <button type="button" class="view-btn" data-view="3" aria-label="3 column view" title="3 columns">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="5" width="5.3" height="14" rx="1.2"></rect><rect x="9.3" y="5" width="5.3" height="14" rx="1.2"></rect><rect x="16.1" y="5" width="5.3" height="14" rx="1.2"></rect></svg>
+          </button>
+        </div>
+        <select class="sort-select" data-target="allProductsGrid" aria-label="Sort products">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="newest">Newest First</option>
+          <option value="name-asc">Name: A–Z</option>
+        </select>
+      </div>
+
+      <div class="product-grid" id="allProductsGrid"></div>
+      <div id="allProductsSeeMore" style="text-align:center;margin-top:30px;display:none;"></div>
+    </div>
+  </section>
+
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="shop-section review-section" id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Customer Love</span>
+        <h2>What Our Customers Say</h2>
+        <p>Real reviews from real customers across Pakistan.</p>
+      </div>
+
+      <div class="review-grid" id="reviewGrid"></div>
+<div class="review-see-more" id="reviewSeeMoreWrap" style="display:none;">
+  <a href="reviews.html">See more reviews →</a>
+</div>
+
+      <div class="review-form-box">
+        <h3>Share Your Experience</h3>
+        <p class="sub">Apna review likhein — ye home page par sabko nazar aayega.</p>
+        <form id="reviewForm">
+          <div class="form-row"><label>Your Name</label><input type="text" id="reviewName" required></div>
+          <div class="form-row">
+            <label>Your Rating</label>
+            <div class="star-input" id="starInput">
+              <button type="button" data-star="1">★</button>
+              <button type="button" data-star="2">★</button>
+              <button type="button" data-star="3">★</button>
+              <button type="button" data-star="4">★</button>
+              <button type="button" data-star="5">★</button>
+            </div>
+          </div>
+          <div class="form-row"><label>Your Review</label><textarea id="reviewText" rows="3" required
+              placeholder="Apna tajurba share karein..."></textarea></div>
+          <button type="submit" class="btn btn-primary btn-block">Submit Review</button>
+          <div class="form-success" id="reviewSuccess">Thank you for your review! ✓</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+ 
+  <div id="site-footer"></div>
+  <div id="ai-chat-root"></div>
+
+  <!-- ============ PRODUCT MODAL ============ -->
+  <div class="modal-overlay" id="productModal">
+    <div class="product-modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div>
+        <div class="modal-gallery-main">
+          <button type="button" class="gallery-arrow gallery-prev" id="galleryPrev"
+            aria-label="Previous image">&#10094;</button>
+          <div class="gallery-track" id="galleryTrack"></div>
+          <button type="button" class="gallery-arrow gallery-next" id="galleryNext"
+            aria-label="Next image">&#10095;</button>
+          <div class="gallery-dots" id="galleryDots"></div>
+        </div>
+        <div class="modal-thumbs" id="modalThumbs"></div>
+      </div>
+      <div class="modal-details">
+        <span class="cat-tag" id="modalCat"></span>
+        <h2 id="modalTitle"></h2>
+        <div class="modal-price">
+          <span class="price" id="modalPrice"></span>
+          <span class="old-price" id="modalOldPrice"></span>
+        </div>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="option-group" id="modalColorGroup">
+          <label>Choose Color</label>
+          <div class="color-options" id="modalColors"></div>
+        </div>
+        <div class="qty-row">
+          <label style="font-size:13px;font-weight:600;">Quantity</label>
+          <div class="qty-control">
+            <button id="qtyMinus" type="button">−</button>
+            <span id="qtyVal">1</span>
+            <button id="qtyPlus" type="button">+</button>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-outline btn-block" id="addToCartBtn">Add to Cart</button>
+          <button class="btn btn-primary btn-block" id="buyNowBtn">Buy Now</button>
+        </div>
+        <p class="stock-note" id="modalStock"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CART DRAWER (injected by common.js) ============ -->
+  <div id="cart-drawer-root"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+<script src="js/responsive.js"></script>
+  <script src="js/store.js"></script>
+</body>
+
+</html>

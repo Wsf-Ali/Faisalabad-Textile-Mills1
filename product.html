@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Product — Faisalabad Textile Mills</title>
+  <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <div id="site-header"></div>
+
+  <!-- ============ PRODUCT DETAIL ============ -->
+  <section class="pdp-section">
+    <div class="container pdp-grid">
+      <div class="pdp-gallery">
+        <div class="modal-gallery-main">
+          <button type="button" class="gallery-arrow gallery-prev" id="pdpGalleryPrev" aria-label="Previous image">&#10094;</button>
+          <div class="gallery-track" id="pdpGalleryTrack"></div>
+          <button type="button" class="gallery-arrow gallery-next" id="pdpGalleryNext" aria-label="Next image">&#10095;</button>
+          <div class="gallery-dots" id="pdpGalleryDots"></div>
+        </div>
+        <div class="modal-thumbs" id="pdpThumbs"></div>
+      </div>
+      <div class="pdp-details">
+        <span class="cat-tag" id="pdpCat"></span>
+        <h1 id="pdpTitle"></h1>
+        <div class="modal-price">
+          <span class="price" id="pdpPrice"></span>
+          <span class="old-price" id="pdpOldPrice"></span>
+        </div>
+        <p class="modal-desc" id="pdpDesc"></p>
+        <div class="option-group" id="pdpColorGroup">
+          <label>Choose Color</label>
+          <div class="color-options" id="pdpColors"></div>
+        </div>
+        <div class="qty-row">
+          <label style="font-size:13px;font-weight:600;">Quantity</label>
+          <div class="qty-control">
+            <button id="pdpQtyMinus" type="button">−</button>
+            <span id="pdpQtyVal">1</span>
+            <button id="pdpQtyPlus" type="button">+</button>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-outline btn-block" id="pdpAddToCartBtn">Add to Cart</button>
+          <button class="btn btn-primary btn-block" id="pdpBuyNowBtn">Buy Now</button>
+        </div>
+        <p class="stock-note" id="pdpStock"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RELATED PRODUCTS ============ -->
+  <section class="shop-section" id="relatedSection">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">You May Also Like</span>
+        <h2>Related Products</h2>
+      </div>
+      <div class="product-grid" id="relatedGrid"></div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <div id="ai-chat-root"></div>
+
+  <!-- ============ QUICK VIEW MODAL (related products ke liye) ============ -->
+  <div class="modal-overlay" id="productModal">
+    <div class="product-modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div>
+        <div class="modal-gallery-main">
+          <button type="button" class="gallery-arrow gallery-prev" id="galleryPrev" aria-label="Previous image">&#10094;</button>
+          <div class="gallery-track" id="galleryTrack"></div>
+          <button type="button" class="gallery-arrow gallery-next" id="galleryNext" aria-label="Next image">&#10095;</button>
+          <div class="gallery-dots" id="galleryDots"></div>
+        </div>
+        <div class="modal-thumbs" id="modalThumbs"></div>
+      </div>
+      <div class="modal-details">
+        <span class="cat-tag" id="modalCat"></span>
+        <h2 id="modalTitle"></h2>
+        <div class="modal-price">
+          <span class="price" id="modalPrice"></span>
+          <span class="old-price" id="modalOldPrice"></span>
+        </div>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="option-group" id="modalColorGroup">
+          <label>Choose Color</label>
+          <div class="color-options" id="modalColors"></div>
+        </div>
+        <div class="qty-row">
+          <label style="font-size:13px;font-weight:600;">Quantity</label>
+          <div class="qty-control">
+            <button id="qtyMinus" type="button">−</button>
+            <span id="qtyVal">1</span>
+            <button id="qtyPlus" type="button">+</button>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-outline btn-block" id="addToCartBtn">Add to Cart</button>
+          <button class="btn btn-primary btn-block" id="buyNowBtn">Buy Now</button>
+        </div>
+        <p class="stock-note" id="modalStock"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CART DRAWER (injected by common.js) ============ -->
+  <div id="cart-drawer-root"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+<script src="js/responsive.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/product-detail.js"></script>
+</body>
+
+</html>

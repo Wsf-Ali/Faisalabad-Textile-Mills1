@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Contact Us — Faisalabad Textile Mills</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <span class="eyebrow">We'd Love to Hear From You</span>
+  <h1>Get in Touch</h1>
+  <p>For orders, sizing, or any questions, feel free to contact us using any of the methods below.</p>
+</section>
+
+<section class="content-block">
+  <div class="contact-grid">
+    <div>
+      <div class="contact-info-card">
+        <div class="icon">📍</div>
+        <div><h4>Visit Us</h4><p>Sitara Mall, Cotton Mill, Faisalabad, Punjab, Pakistan</p></div>
+      </div>
+      <div class="contact-info-card">
+        <div class="icon">📞</div>
+        <div><h4>Call Us</h4><p>+92 328 7526397 (10am – 9pm, Mon–Sat)</p></div>
+      </div>
+      <div class="contact-info-card">
+        <div class="icon">✉️</div>
+        <div><h4>Email Us</h4><p>faisalabadtextilemills@gmail.com</p></div>
+      </div>
+      <div class="contact-info-card">
+        <div class="icon">💬</div>
+        <div><h4>WhatsApp</h4><p>+92 328 7526397 — fastest response</p></div>
+      </div>
+
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps?q=Sitara+lal+center,+Tata+Bazar+Rd,+Factory+Area,+Faisalabad&output=embed" loading="lazy" title="Faisalabad Textile Mills store location map"></iframe>
+      </div>
+      <a href="https://maps.app.goo.gl/qKLtcY487JezdkJF8" target="_blank" rel="noopener" class="btn btn-outline btn-block" style="margin-top:12px;">📍 Open in Google Maps</a>
+    </div>
+
+    <div class="contact-form-box">
+      <h3 style="font-size:22px;margin-bottom:6px;">Send a Message</h3>
+      <p style="color:var(--ink-soft);font-size:13.5px;margin-bottom:22px;">Fill out the form, and we'll get back to you within 24 hours.</p>
+      <form id="contactForm">
+        <div class="form-row"><label>Full Name</label><input type="text" required></div>
+        <div class="form-row"><label>Email</label><input type="email" required></div>
+        <div class="form-row"><label>Phone</label><input type="tel"></div>
+        <div class="form-row"><label>Message</label><textarea rows="4" required placeholder="Apna sawal ya order ki tafseel likhein..."></textarea></div>
+        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+        <div class="form-success" id="formSuccess">Thank you! We've received your message and will get in touch with you soon. ✓</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<div id="ai-chat-root"></div>
+<div id="cart-drawer-root"></div>
+
+<script src="js/data.js"></script>
+<script src="js/common.js"></script>
+<script src="js/responsive.js"></script>
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    document.getElementById("formSuccess").classList.add("show");
+    this.reset();
+    setTimeout(() => document.getElementById("formSuccess").classList.remove("show"), 5000);
+  });
+</script>
+</body>
+</html>
